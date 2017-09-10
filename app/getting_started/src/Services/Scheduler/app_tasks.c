@@ -28,29 +28,26 @@
 * Code of module wide FUNCTIONS
 *****************************************************************************************************/
 
-/* List of tasks to be executed @ 1ms */
-void TASKS_LIST_1MS( void )
-{;}
+/* List of tasks to be executed @ 3s */
+void TASKS_LIST_3S( void )
+{
 
-/* List of tasks to be executed @ 2ms, first group */
-void TASKS_LIST_2MS_A(void)
-{;}
-/* List of tasks to be executed @ 2ms, second group */
-void TASKS_LIST_2MS_B( void )
-{;}
-    
-/* List of tasks to be executed @ 10ms */
-void TASKS_LIST_10MS( void )
+}
+
+/* List of tasks to be executed @ 1s */
+void TASKS_LIST_1S( void )
 {
     vfnLedCtrl_BlinkingPattern();
 }
-/* List of tasks to be executed @ 50ms */
-void TASKS_LIST_50MS( void )
-{;}
-/* List of tasks to be executed @ 100ms */
-void TASKS_LIST_100MS( void )
+/* List of tasks to be executed @ 2s */
+void TASKS_LIST_2S( void )
+{
+
+}
+/* List of tasks to be executed @ 8s */
+void TASKS_LIST_8S( void )
 { 
-    vfnSerialCtrl_StartTx();
+
 }
 
 

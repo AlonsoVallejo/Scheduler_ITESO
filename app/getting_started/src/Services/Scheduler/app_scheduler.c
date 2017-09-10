@@ -22,26 +22,25 @@
 * Definition of  VARIABLEs - 
 *****************************************************************************************************/
 
-UINT8 gu8Scheduler_Status;
-UINT8 gu8Scheduler_Counter;
+uint8_t gu8Scheduler_Status;
+uint8_t gu8Scheduler_Counter;
 
 tSchedulerTasks_ID TaskScheduler_Task_ID_Activated;
 tSchedulerTasks_ID TaskScheduler_Task_ID_Running;
 tSchedulerTasks_ID TasksScheduler_Task_ID_Backup;
 
-UINT8 u8_10ms_Counter;
-UINT8 u8_50ms_Counter;
-UINT8 u8_100ms_Counter;
+uint16_t u16_1s_Counter;
+uint16_t u16_2s_Counter;
+uint16_t u16_3s_Counter;
+uint16_t u16_8s_Counter;
 
 
 tSchedulingTask TimeTriggeredTasks[TASK_SCH_MAX_NUMBER_TIME_TASKS] =
 { 
-    {TASKS_1_MS,  TASKS_LIST_1MS,  SUSPENDED, 5},
-    {TASKS_2_MS_A,TASKS_LIST_2MS_A,SUSPENDED, 4},
-    {TASKS_2_MS_B,TASKS_LIST_2MS_B,SUSPENDED, 4},
-    {TASKS_10_MS, TASKS_LIST_10MS, SUSPENDED, 3},
-    {TASKS_50_MS, TASKS_LIST_50MS, SUSPENDED, 2},
-    {TASKS_100_MS,TASKS_LIST_100MS,SUSPENDED, 1},
+    {TASKS_1,  TASKS_LIST_3S,  SUSPENDED, 3},
+    {TASKS_2,  TASKS_LIST_1S,  SUSPENDED, 1},
+    {TASKS_3,  TASKS_LIST_2S,  SUSPENDED, 2},
+    {TASKS_4,  TASKS_LIST_8S,  SUSPENDED, 4},
 };
 
 /*****************************************************************************************************
@@ -73,9 +72,10 @@ void vfnScheduler_Init(void)
     TaskScheduler_Task_ID_Activated = TASK_NULL;
     TaskScheduler_Task_ID_Running = TASK_NULL;
     TasksScheduler_Task_ID_Backup = TASK_NULL;
-    u8_10ms_Counter        = 0u;
-    u8_50ms_Counter        = 0u;
-    u8_100ms_Counter       = 0u;
+    u16_1s_Counter        = 0u;
+    u16_2s_Counter        = 0u;
+    u16_3s_Counter        = 0u;
+    u16_8s_Counter        = 0u;
     gu8Scheduler_Status    = TASK_SCHEDULER_INIT;
 }
 
@@ -160,92 +160,53 @@ void vfnScheduler_TaskActivate( tSchedulingTask * Task )
 void vfnTask_Scheduler(void)
 {
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    /*  1ms execution thread - used to derive two execution threads:                */
-    /*  a) 1ms thread (high priority tasks)                                         */
-    /*  b) 100ms thread (lowest priority tasks)                                     */
-    /*  As any other thread on this scheduler, all tasks must be executed in <=500us*/
+    /*  1s execution thread - used to derive two execution threads:                */
+    /*  a) 1s thread (high priority tasks)                                         */
+    /*  b) 3s thread (lowest priority tasks)                                     */
+    /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    if( ( TaskScheduler_Task_ID_Activated == TASKS_1_MS )
-         || ( TaskScheduler_Task_ID_Activated == TASKS_100_MS ) )
+    if( ( TaskScheduler_Task_ID_Activated == TASKS_1 )
+         || ( TaskScheduler_Task_ID_Activated == TASKS_2 ) )
     {
         /* Make a copy of scheduled task ID */
         TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
 
-        vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_1_MS]);
-        if( TaskScheduler_Task_ID_Activated == TASKS_100_MS )
+        vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2]);
+        if( TaskScheduler_Task_ID_Activated == TASKS_1 )
         {
-            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_100_MS]);
+            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_1]);
         }
-        /* Verify that thread execution took less than 500 us */
+        /* Verify that thread execution took less than 1 ms */
         if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
         {
-             /* In case execution of all thread took less than 500us */
+             /* In case execution of all thread took less than 1ms */
             TaskScheduler_Task_ID_Activated = TASK_NULL;
-        }
-        else
-        {
-            gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_1MS;
         }
     }
     else
     {
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        /*  2ms execution thread - used to derive two execution threads:                */
-        /*  a) 2ms group A thread (high priority tasks)                                 */
-        /*  b) 50ms thread (second lowest priority tasks)                               */
-        /*  As any other thread on this scheduler, all tasks must be executed in <=500us*/
+        /*  2s execution thread - used to derive two execution threads:                */
+        /*  a) 2s thread (high priority tasks)                                 */
+        /*  b) 8s thread (second lowest priority tasks)                               */
+        /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        if( ( TaskScheduler_Task_ID_Activated == TASKS_2_MS_A )
-             || ( TaskScheduler_Task_ID_Activated == TASKS_50_MS ) )
+        if( ( TaskScheduler_Task_ID_Activated == TASKS_3 )
+             || ( TaskScheduler_Task_ID_Activated == TASKS_4 ) )
         {
             /* Make a copy of scheduled task ID */
             TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
 
-            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2_MS_A]);
-            if( TaskScheduler_Task_ID_Activated == TASKS_50_MS )
+            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_3]);
+            if( TaskScheduler_Task_ID_Activated == TASKS_4 )
             {
-                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_50_MS]);
+                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_4]);
             }
-            /* Verify that thread execution took less than 500 us */
+            /* Verify that thread execution took less than 1 ms */
             if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
             {
-                 /* In case execution of all thread took less than 500us */
+                 /* In case execution of all thread took less than 1ms */
                 TaskScheduler_Task_ID_Activated = TASK_NULL;
-            }
-            else
-            {
-                gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_2MS_A;
-            }
-        }
-        else
-        {
-            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-            /*  2ms execution thread - used to derive two execution threads:                */
-            /*  a) 2ms group B thread (high priority tasks)                                 */
-            /*  b) 10ms thread (medium priority tasks)                                      */
-            /*  As any other thread on this scheduler, all tasks must be executed in <=500us*/
-            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-            if( ( TaskScheduler_Task_ID_Activated == TASKS_2_MS_B )
-                 || ( TaskScheduler_Task_ID_Activated == TASKS_10_MS ) )
-            {
-                /* Make a copy of scheduled task ID */
-                TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
-
-                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2_MS_B]);
-                if( TaskScheduler_Task_ID_Activated == TASKS_10_MS )
-                {
-                    vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_10_MS]);
-                }
-                 /* Verify that thread execution took less than 500 us */
-                if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
-                {
-                    /* In case execution of all thread took less than 500us */
-                    TaskScheduler_Task_ID_Activated = TASK_NULL;
-                }
-                else
-                {
-                    gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_2MS_B;
-                }
             }
         }
     }        
@@ -253,14 +214,13 @@ void vfnTask_Scheduler(void)
 
 /*******************************************************************************/
 /**
-* \brief    Periodic Interrupt Timer Service routine.                            \n
+* \brief    Periodic Interrupt Timer Service routine.                           \n
             This interrupt is the core of the task scheduler.                   \n
-            It is executed every 500us                                          \n
+            It is executed every 1ms                                          	\n
             It defines 3 basic threads from which other 3 threads are derived:  \n
-            a) 1ms thread (basic) ->  100ms thread (derived)                    \n
-            b) 2ms A thread (basic)-> 50ms thread (derived)                     \n
-            c) 2ms B thread (basic)-> 10ms thread (derived)                     \n
-            It partitions core execution time into time slices (500us each one).\n 
+            a) 1s thread (basic) ->  3s thread (derived)                    \n
+            b) 2s thread (basic)-> 8s thread (derived)                     \n
+            It partitions core execution time into time slices (1ms each one).\n
             This arrangement assures core will have equal task loading across time.\n   
             For more information on how time slice is assigned to each thread,  \n
             refer to file "S12X Task Scheduler Layout.xls"
@@ -276,75 +236,52 @@ void vfnScheduler_Callback(void)
     gu8Scheduler_Counter++;
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    /*  1ms execution thread - used to derive two execution threads:                */
-    /*  a) 1ms thread (highest priority tasks)                                      */
-    /*  b) 100ms thread (lowest priority tasks)                                     */
-    /*  As any other thread on this scheduling scheme,                              */
-    /*  all tasks must be executed in <= 500us                                      */
+    /*  1s execution thread - used to derive two execution threads:                */
+    /*  a) 1s thread (high priority tasks)                                         */
+    /*  b) 3s thread (lowest priority tasks)                                     */
+    /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     if( ( gu8Scheduler_Counter & 0x01u ) == 0x01u )
     {
-        u8_100ms_Counter++;
-        /*-- Allow 100 ms periodic tasks to be executed --*/
-        if( u8_100ms_Counter >= 100u )
+    	u16_1s_Counter++;
+    	u16_3s_Counter++;
+        /*-- Allow 3 sec periodic tasks to be executed --*/
+        if( u16_3s_Counter >= 3000u )
         {
             /* Indicate that Task is Ready to be executed */ 
-            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_100_MS]);
-            u8_100ms_Counter       = 0u;
+            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1]);
+            u16_3s_Counter       = 0u;
         }
-        /*-- Allow 1 ms periodic tasks to be executed --*/
-        else
+        /*-- Allow 1 sec periodic tasks to be executed --*/
+        if(u16_1s_Counter >= 1000)
         {
-            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1_MS]);
+            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2]);
+            u16_1s_Counter = 0;
         }
     }
     else
     {
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        /*  2ms execution thread - used to derive two execution threads:                */
-        /*  a) 2ms group A thread (high priority tasks)                                 */
-        /*  b) 50ms thread (second lowest priority tasks)                               */
-        /*  As any other thread on this scheduling scheme,                              */
-        /*  all tasks must be executed in <= 500us                                      */
+        /*  2s execution thread - used to derive two execution threads:                */
+        /*  a) 2s thread (high priority tasks)                                 */
+        /*  b) 8s thread (second lowest priority tasks)                               */
+        /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
         if( ( gu8Scheduler_Counter & 0x02u ) == 0x02u )
         {
-            u8_50ms_Counter++;
-            /*-- Allow 50 ms periodic tasks to be executed --*/
-            if( u8_50ms_Counter >= 25u )
+        	u16_2s_Counter++;
+        	u16_8s_Counter++;
+            /*-- Allow 8 sec periodic tasks to be executed --*/
+            if( u16_8s_Counter >= 8000u )
             {
-                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_50_MS]);
-                u8_50ms_Counter        = 0u;
+                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_4]);
+                u16_8s_Counter = 0u;
             }
-            /*-- Allow 2 ms group A periodic tasks to be executed --*/
-            else
+            /*-- Allow 2 sec periodic tasks to be executed --*/
+            if(u16_2s_Counter >= 2000)
             {
-                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2_MS_A]);
-            }
-        }
-        else
-        {
-            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-            /*  2ms execution thread - used to derive two execution threads:                */
-            /*  a) 2ms group B thread (high priority tasks)                                 */
-            /*  b) 10ms thread (medium priority tasks)                                      */
-            /*  As any other thread on this scheduling scheme,                              */
-            /*  all tasks must be executed in <= 500us                                      */
-            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-            if( ( gu8Scheduler_Counter & 0x03u ) == 0x00u )
-            {
-                u8_10ms_Counter++;
-                /*-- Allow 10 ms periodic tasks to be executed --*/
-                if( u8_10ms_Counter >= 5u )
-                {
-                    vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_10_MS]);
-                    u8_10ms_Counter        = 0u;
-                }
-                /*-- Allow 2 ms group B periodic tasks to be executed --*/
-                else
-                {
-                    vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2_MS_B]);
-                }
+                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_3]);
+                u16_2s_Counter = 0;
             }
         }
     }

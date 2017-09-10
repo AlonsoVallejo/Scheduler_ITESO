@@ -28,12 +28,10 @@ typedef enum
 /* Task Scheduler Tasks IDs definitions */
 typedef enum  
 {   
-    TASKS_1_MS,
-    TASKS_2_MS_A,
-    TASKS_2_MS_B,
-    TASKS_10_MS,
-    TASKS_50_MS,
-    TASKS_100_MS,
+    TASKS_1,
+    TASKS_2,
+    TASKS_3,
+    TASKS_4,
     TASK_NULL,
 }tSchedulerTasks_ID;
 
@@ -55,14 +53,11 @@ typedef struct
 /* Global Task Scheduler Status definitions */
 #define    TASK_SCHEDULER_INIT              0x00u
 #define    TASK_SCHEDULER_RUNNING           0x01u
-#define    TASK_SCHEDULER_OVERLOAD_1MS      0x02u
-#define    TASK_SCHEDULER_OVERLOAD_2MS_A    0x03u
-#define    TASK_SCHEDULER_OVERLOAD_2MS_B    0x04u
 #define    TASK_SCHEDULER_HALTED            0xAAu
 
-#define    TASK_SCH_MAX_NUMBER_TIME_TASKS   0x06u
+#define    TASK_SCH_MAX_NUMBER_TIME_TASKS   0x04u
 
-#define    TASK_SCHEDULER_BASE_FREQ		    1000
+#define    TASK_SCHEDULER_BASE_FREQ		    2000
 /*****************************************************************************************************
 * Definition of module wide VARIABLEs
 *****************************************************************************************************/

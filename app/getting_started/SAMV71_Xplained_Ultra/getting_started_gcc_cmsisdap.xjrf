@@ -49,53 +49,54 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>24</C>
-       <L>361</L>
-       <P>..\..\..\toolset\gcc\startup_sam.c</P>
-       <VL>361</VL>
+       <L>357</L>
+       <P>..\..\..\hal\libchip_samv7\source\pio.c</P>
+       <VL>343</VL>
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <P>..\src\Services\Scheduler\app_tasks.c</P>
-       <VL>33</VL>
+       <L>103</L>
+       <P>..\..\..\bsp\libboard_samv7-ek\source\led.c</P>
+       <VL>84</VL>
       </PI.1>
       <PI.10>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>51</C>
+       <L>19</L>
+       <P>..\src\Services\Scheduler\app_tasks.h</P>
+       <VL>9</VL>
+      </PI.10>
+      <PI.11>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>19</C>
+       <L>53</L>
+       <P>..\..\..\hal\libchip_samv7\include\uart.h</P>
+       <VL>30</VL>
+      </PI.11>
+      <PI.12>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>208</L>
        <P>..\..\..\hal\libchip_samv7\source\exceptions.c</P>
        <VL>196</VL>
-      </PI.10>
-      <PI.11>
+      </PI.12>
+      <PI.13>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>25</C>
        <L>96</L>
        <P>..\..\..\hal\libchip_samv7\chip.h</P>
        <VL>84</VL>
-      </PI.11>
-      <PI.12>
+      </PI.13>
+      <PI.14>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>82</L>
        <P>..\..\..\bsp\libboard_samv7-ek\board.h</P>
        <VL>82</VL>
-      </PI.12>
-      <PI.13>
+      </PI.14>
+      <PI.15>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>194</L>
        <P>..\..\..\bsp\libboard_samv7-ek\source\dbg_console.c</P>
        <VL>181</VL>
-      </PI.13>
-      <PI.14>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>103</L>
-       <P>..\..\..\bsp\libboard_samv7-ek\source\led.c</P>
-       <VL>84</VL>
-      </PI.14>
-      <PI.15>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>31</C>
-       <L>356</L>
-       <P>..\..\..\hal\libchip_samv7\source\pio.c</P>
-       <VL>343</VL>
       </PI.15>
       <PI.16>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -122,10 +123,9 @@
       </PI.19>
       <PI.2>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>30</C>
-       <L>43</L>
-       <P>..\src\Services\Scheduler\app_scheduler.h</P>
-       <VL>60</VL>
+       <L>66</L>
+       <P>..\src\main.c</P>
+       <VL>53</VL>
       </PI.2>
       <PI.20>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -188,10 +188,9 @@
       </PI.29>
       <PI.3>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>27</C>
-       <L>159</L>
-       <P>..\src\Services\Scheduler\app_scheduler.c</P>
-       <VL>135</VL>
+       <L>334</L>
+       <P>..\..\..\toolset\gcc\startup_sam.c</P>
+       <VL>321</VL>
       </PI.3>
       <PI.30>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -256,9 +255,8 @@
       </PI.39>
       <PI.4>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>21</C>
-       <L>5</L>
-       <P>..\src\ECU Abstraction\Serial control\serial_ctrl.c</P>
+       <P>..\src\Services\Scheduler\app_tasks.c</P>
+       <VL>33</VL>
       </PI.4>
       <PI.40>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -325,38 +323,37 @@
       </PI.49>
       <PI.5>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>1</C>
-       <L>68</L>
-       <P>..\src\ECU Abstraction\LED control\led_ctrl.c</P>
-       <VL>58</VL>
+       <C>30</C>
+       <L>43</L>
+       <P>..\src\Services\Scheduler\app_scheduler.h</P>
+       <VL>60</VL>
       </PI.5>
       <PI.6>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>51</C>
-       <L>19</L>
-       <P>..\src\Services\Scheduler\app_tasks.h</P>
-       <VL>9</VL>
+       <C>37</C>
+       <L>27</L>
+       <P>..\src\Services\Scheduler\app_scheduler.c</P>
+       <VL>18</VL>
       </PI.6>
       <PI.7>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>40</C>
-       <L>49</L>
-       <P>..\src\main.c</P>
-       <VL>37</VL>
+       <C>55</C>
+       <L>36</L>
+       <P>..\src\ECU Abstraction\Serial control\serial_ctrl.h</P>
+       <VL>22</VL>
       </PI.7>
       <PI.8>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>25</C>
-       <L>34</L>
-       <P>..\src\ECU Abstraction\Serial control\serial_ctrl.h</P>
-       <VL>22</VL>
+       <C>21</C>
+       <L>5</L>
+       <P>..\src\ECU Abstraction\Serial control\serial_ctrl.c</P>
       </PI.8>
       <PI.9>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>19</C>
-       <L>53</L>
-       <P>..\..\..\hal\libchip_samv7\include\uart.h</P>
-       <VL>30</VL>
+       <C>53</C>
+       <L>92</L>
+       <P>..\src\ECU Abstraction\LED control\led_ctrl.c</P>
+       <VL>75</VL>
       </PI.9>
      </REG_ROOT>
     </EditorOptions>
@@ -1085,10 +1082,10 @@
      <Documents.0>
       <ActiveDocument>
        <Maximized>True</Maximized>
-       <RelativeFileName>..\src\Services\Scheduler\app_scheduler.c</RelativeFileName>
+       <RelativeFileName>..\..\..\toolset\gcc\startup_sam.c</RelativeFileName>
       </ActiveDocument>
       <Editor.0>
-       <FileBarIndex>1</FileBarIndex>
+       <FileBarIndex>4</FileBarIndex>
        <RectPosBottom>325</RectPosBottom>
        <RectPosLeft>0</RectPosLeft>
        <RectPosRight>1512</RectPosRight>
@@ -1096,7 +1093,7 @@
        <RelativeFileName>..\src\ECU Abstraction\LED control\led_ctrl.c</RelativeFileName>
       </Editor.0>
       <Editor.1>
-       <FileBarIndex>2</FileBarIndex>
+       <FileBarIndex>5</FileBarIndex>
        <RectPosBottom>376</RectPosBottom>
        <RectPosLeft>78</RectPosLeft>
        <RectPosRight>1590</RectPosRight>
@@ -1104,37 +1101,69 @@
        <RelativeFileName>..\src\ECU Abstraction\Serial control\serial_ctrl.c</RelativeFileName>
       </Editor.1>
       <Editor.2>
-       <FileBarIndex>3</FileBarIndex>
+       <FileBarIndex>6</FileBarIndex>
+       <RectPosBottom>325</RectPosBottom>
+       <RectPosLeft>0</RectPosLeft>
+       <RectPosRight>1512</RectPosRight>
+       <RectPosTop>0</RectPosTop>
+       <RelativeFileName>..\src\ECU Abstraction\Serial control\serial_ctrl.h</RelativeFileName>
+      </Editor.2>
+      <Editor.3>
+       <FileBarIndex>2</FileBarIndex>
+       <RectPosBottom>351</RectPosBottom>
+       <RectPosLeft>26</RectPosLeft>
+       <RectPosRight>1538</RectPosRight>
+       <RectPosTop>26</RectPosTop>
+       <RelativeFileName>..\src\main.c</RelativeFileName>
+      </Editor.3>
+      <Editor.4>
+       <FileBarIndex>7</FileBarIndex>
        <RectPosBottom>429</RectPosBottom>
        <RectPosLeft>104</RectPosLeft>
        <RectPosRight>1616</RectPosRight>
        <RectPosTop>104</RectPosTop>
        <RelativeFileName>..\src\Services\Scheduler\app_scheduler.c</RelativeFileName>
-      </Editor.2>
-      <Editor.3>
-       <FileBarIndex>4</FileBarIndex>
+      </Editor.4>
+      <Editor.5>
+       <FileBarIndex>8</FileBarIndex>
        <RectPosBottom>455</RectPosBottom>
        <RectPosLeft>130</RectPosLeft>
        <RectPosRight>1642</RectPosRight>
        <RectPosTop>130</RectPosTop>
        <RelativeFileName>..\src\Services\Scheduler\app_scheduler.h</RelativeFileName>
-      </Editor.3>
-      <Editor.4>
-       <FileBarIndex>5</FileBarIndex>
+      </Editor.5>
+      <Editor.6>
+       <FileBarIndex>9</FileBarIndex>
        <RectPosBottom>350</RectPosBottom>
        <RectPosLeft>52</RectPosLeft>
        <RectPosRight>1564</RectPosRight>
        <RectPosTop>52</RectPosTop>
        <RelativeFileName>..\src\Services\Scheduler\app_tasks.c</RelativeFileName>
-      </Editor.4>
-      <Editor.5>
+      </Editor.6>
+      <Editor.7>
+       <FileBarIndex>1</FileBarIndex>
+       <RectPosBottom>377</RectPosBottom>
+       <RectPosLeft>52</RectPosLeft>
+       <RectPosRight>1564</RectPosRight>
+       <RectPosTop>52</RectPosTop>
+       <RelativeFileName>..\..\..\bsp\libboard_samv7-ek\source\led.c</RelativeFileName>
+      </Editor.7>
+      <Editor.8>
        <FileBarIndex>0</FileBarIndex>
+       <RectPosBottom>403</RectPosBottom>
+       <RectPosLeft>78</RectPosLeft>
+       <RectPosRight>1590</RectPosRight>
+       <RectPosTop>78</RectPosTop>
+       <RelativeFileName>..\..\..\hal\libchip_samv7\source\pio.c</RelativeFileName>
+      </Editor.8>
+      <Editor.9>
+       <FileBarIndex>3</FileBarIndex>
        <RectPosBottom>351</RectPosBottom>
        <RectPosLeft>26</RectPosLeft>
        <RectPosRight>1538</RectPosRight>
        <RectPosTop>26</RectPosTop>
        <RelativeFileName>..\..\..\toolset\gcc\startup_sam.c</RelativeFileName>
-      </Editor.5>
+      </Editor.9>
       <EditorHistoryFile.0>
        <RelativeFileName>..\src\ECU Abstraction\Serial control\serial_ctrl.h</RelativeFileName>
       </EditorHistoryFile.0>
@@ -1184,7 +1213,7 @@
       </WatchPane.0>
       <WatchPane.2>
        <Watch.0>
-        <WatchName>gu8Scheduler_Counter</WatchName>
+        <WatchName>gu8Scheduler_Counter &amp; 0x01</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
@@ -1195,6 +1224,90 @@
          <Scale>0</Scale>
         </ExpressionDisplay>
        </Watch.0>
+       <Watch.1>
+        <WatchName>gu8Scheduler_Counter &amp; 0x02</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.1>
+       <Watch.2>
+        <WatchName>gu8Index</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.2>
+       <Watch.3>
+        <WatchName>gu8Scheduler_Counter</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.3>
+       <Watch.4>
+        <WatchName>u16_1s_Counter</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.4>
+       <Watch.5>
+        <WatchName>u16_3s_Counter</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.5>
+       <Watch.6>
+        <WatchName>u16_2s_Counter</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.6>
+       <Watch.7>
+        <WatchName>u16_8s_Counter</WatchName>
+        <ExpressionDisplay>
+         <Color>0</Color>
+         <ColorBack>8421376</ColorBack>
+         <ColorText>0</ColorText>
+         <Enabled>0</Enabled>
+         <Hi type="D">100.0000000000000000</Hi>
+         <Lo type="D">0.0000000000000000</Lo>
+         <Scale>0</Scale>
+        </ExpressionDisplay>
+       </Watch.7>
       </WatchPane.2>
      </Watches>
      <Watches2>
@@ -2128,7 +2241,7 @@
        </Items.0>
       </OSWindow>
       <ProjectWindow>
-       <Selected>systick.c</Selected>
+       <Selected>app_scheduler.c</Selected>
        <Items.0>
         <__>
          <Name>Files</Name>

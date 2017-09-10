@@ -1,6 +1,8 @@
-INITIALIZING	Emulator: EDBG CMSIS-DAP   Debugger: On-chip
-LOADING	C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\app\getting_started\SAMV71_Xplained_Ultra\Debug\getting_started.elf
+CONVERTING	C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\getting_started.elf
+LOADING	C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\getting_started.elf
 ANALYZING
 ANALYZING
 EMULATION	POD: Cortex (JTAG,SWD)   CPU: Cortex-M7
 DEBUG	PROTOCOL: SWD; RESET: SoC
+LOADING 	41604 bytes
+PROGRAMMING	Atmel ATSAMV7 (2048 kB) (3 sectors)
