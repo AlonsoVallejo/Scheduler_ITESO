@@ -241,49 +241,42 @@ void vfnScheduler_Callback(void)
     /*  b) 3s thread (lowest priority tasks)                                     */
     /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    if( ( gu8Scheduler_Counter & 0x01u ) == 0x01u )
+    u16_1s_Counter++;
+    u16_3s_Counter++;
+    u16_2s_Counter++;
+    u16_8s_Counter++;
+    /*-- Allow 3 sec periodic tasks to be executed --*/
+    if( u16_3s_Counter >= 3000u )
     {
-    	u16_1s_Counter++;
-    	u16_3s_Counter++;
-        /*-- Allow 3 sec periodic tasks to be executed --*/
-        if( u16_3s_Counter >= 3000u )
-        {
-            /* Indicate that Task is Ready to be executed */ 
-            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1]);
-            u16_3s_Counter       = 0u;
-        }
-        /*-- Allow 1 sec periodic tasks to be executed --*/
-        if(u16_1s_Counter >= 1000)
-        {
-            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2]);
-            u16_1s_Counter = 0;
-        }
+    	/* Indicate that Task is Ready to be executed */
+    	vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1]);
+    	u16_3s_Counter       = 0u;
     }
-    else
+    /*-- Allow 1 sec periodic tasks to be executed --*/
+    if(u16_1s_Counter >= 1000)
     {
-        /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        /*  2s execution thread - used to derive two execution threads:                */
-        /*  a) 2s thread (high priority tasks)                                 */
-        /*  b) 8s thread (second lowest priority tasks)                               */
-        /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
-        /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        if( ( gu8Scheduler_Counter & 0x02u ) == 0x02u )
-        {
-        	u16_2s_Counter++;
-        	u16_8s_Counter++;
-            /*-- Allow 8 sec periodic tasks to be executed --*/
-            if( u16_8s_Counter >= 8000u )
-            {
-                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_4]);
-                u16_8s_Counter = 0u;
-            }
-            /*-- Allow 2 sec periodic tasks to be executed --*/
-            if(u16_2s_Counter >= 2000)
-            {
-                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_3]);
-                u16_2s_Counter = 0;
-            }
-        }
+    	vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2]);
+    	u16_1s_Counter = 0;
+    }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    /*  2s execution thread - used to derive two execution threads:                */
+    /*  a) 2s thread (high priority tasks)                                 */
+    /*  b) 8s thread (second lowest priority tasks)                               */
+    /*  As any other thread on this scheduler, all tasks must be executed in <=1ms*/
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+    /*-- Allow 8 sec periodic tasks to be executed --*/
+    if( u16_8s_Counter >= 8000u )
+    {
+    	vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_4]);
+    	u16_8s_Counter = 0u;
+    }
+    /*-- Allow 2 sec periodic tasks to be executed --*/
+    if(u16_2s_Counter >= 2000)
+    {
+    	vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_3]);
+    	u16_2s_Counter = 0;
     }
 }
 /***************************************************************************************************/

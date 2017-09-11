@@ -37,7 +37,7 @@ void TASKS_LIST_3S( void )
 /* List of tasks to be executed @ 1s */
 void TASKS_LIST_1S( void )
 {
-    vfnLedCtrl_BlinkingPattern();
+	vfnLedCtrl_BlinkingPattern();
 }
 /* List of tasks to be executed @ 2s */
 void TASKS_LIST_2S( void )

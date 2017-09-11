@@ -21,6 +21,10 @@
 #include    "app_scheduler.h"
 /** LED control definitions */
 #include    "led_ctrl.h"
+/** EDGB GPIO control definitions */
+#include    "ECU Abstraction/EDGB/EDGB_GPIO.h"
+/** EDGB SPI control definitions */
+#include    "ECU Abstraction/EDGB/EDGB_SPI.h"
 /** UART communication */
 #include    "serial_ctrl.h"
 /** Watchdog control function prototypes definitions */
@@ -49,12 +53,14 @@ extern int main( void )
 	/* Disable watchdog */
 	vfnWdtCtrl_Disable();
 	/* Enable I and D cache */
-	SCB_EnableICache();
 	/* SCB_EnableDCache(); */
-	/* Configure LEDs */
-	vfnLedCtrl_Configure(); 
-	/* Initialize UART communicaiton */
-	vfnSerialCtrl_Init();
+	SCB_EnableICache();
+	/* Configure LED */
+	vfnLedCtrl_Configure();
+	/* Configure EDGB_GPIO */
+	vfn_EDGB_GPIOCtrl_Configure();
+	/* Configure EDGB_SPI */
+	vfn_EDGB_SPI_Configure();
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();
 	/* Start scheduler */

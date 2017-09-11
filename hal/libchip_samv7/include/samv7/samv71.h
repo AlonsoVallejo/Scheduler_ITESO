@@ -30,6 +30,8 @@
 #ifndef _SAMV71_
 #define _SAMV71_
 
+//#define __SAMV71Q21__
+
 #if defined __SAMV71J19__
   #include "samv71j19.h"
 #elif defined __SAMV71J20__

@@ -68,11 +68,5 @@ extern uint32_t LED_Clear( uint32_t dwLed );
 
 extern uint32_t LED_Toggle( uint32_t dwLed );
 
-extern uint32_t GPIO_Configure( uint32_t GPIO );
-
-extern uint32_t GPIO_Set( uint32_t GPIO );
-
-extern uint32_t GPIO_Clear( uint32_t GPIO );
-
 #endif /* #ifndef LED_H */
 

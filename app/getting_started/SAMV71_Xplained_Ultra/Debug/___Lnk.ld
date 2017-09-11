@@ -36,6 +36,9 @@ INPUT ("C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Schedule
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\systick.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\wdt_ctrl.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\app_tasks.o" 
+"C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\gpio.o" 
+"C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\EDGB_GPIO.o" 
+"C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\EDGB_SPI.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\startup_sam.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\dbg_console.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o" 
@@ -53,7 +56,8 @@ INPUT ("C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Schedule
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdma_hardware_interface.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdmac.o" 
 "C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdmad.o" 
-"C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\exceptions.o")
+"C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\exceptions.o" 
+"C:\Users\inspiron  5567_I7\Documents\Eclipse_WS\scheduler_iteso\Scheduler_ITESO\app\getting_started\SAMV71_Xplained_Ultra\Debug\spi.o")
 
 /*------------------------------------------------------------------------------
  *      Linker script for running in internal FLASH on the ATSAMV71Q21

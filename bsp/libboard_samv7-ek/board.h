@@ -111,7 +111,8 @@
 #include "include/ovyuv.h"
 #include "include/ov.h"
 #include "include/iso7816_4.h"
-   
+#include "include/gpio.h"
+
 #if defined (  __GNUC__  )
 #include "include/syscalls.h"
 #endif
@@ -290,8 +291,19 @@
 /** GPIO PTA00 **/
 #define GPIO_PTA00 {PIO_PA0, PIOA, ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT}
 
+/* GPIO for EDGB */
+/** GPIO PTA09 **/
+#define GPIO_PTA09 {PIO_PA9, PIOA, ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT}
+/** GPIO PTA23 **/
+#define GPIO_PTA23 {PIO_PA23, PIOA, ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT}
+/** GPIO PTD28 **/
+#define GPIO_PTD28 {PIO_PD28, PIOD, ID_PIOD, PIO_OUTPUT_1, PIO_DEFAULT}
+/** GPIO PTA02 **/
+#define GPIO_PTA2 {PIO_PA2, PIOA, ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT}
+
+
 /** List of all GPIO definitions. */
-#define PINS_GPIO {GPIO_PTA06, GPIO_PTA00}
+#define PINS_GPIO {GPIO_PTA09, GPIO_PTA23, GPIO_PTD28, GPIO_PTA2}
 
 /** LED #0 pin definition (YELLOW). */
 #define PIN_LED_0  {PIO_PA23, PIOA, ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT}
@@ -336,6 +348,7 @@
 /** PWM channel for LED1 */
 #define CHANNEL_PWM_LED1 1
 
+/* SPI for EDGB */
 /** SPI MISO pin definition. */
 #define PIN_SPI_MISO {PIO_PD20B_SPI0_MISO, PIOD, ID_PIOD, PIO_PERIPH_B, PIO_DEFAULT}
 /** SPI MOSI pin definition. */
@@ -343,12 +356,16 @@
 /** SPI SPCK pin definition. */
 #define PIN_SPI_SPCK {PIO_PD22B_SPI0_SPCK, PIOD, ID_PIOD, PIO_PERIPH_B, PIO_DEFAULT}
 /** SPI chip select pin definition. */
+#define PIN_SPI_NPCS2 {PIO_PD12C_SPI0_NPCS2, PIOC, ID_PIOC, PIO_PERIPH_C, PIO_DEFAULT}
+
+
+/** SPI chip select pin definition. */
 #define PIN_SPI_NPCS0 {PIO_PB2D_SPI0_NPCS0, PIOB, ID_PIOB, PIO_PERIPH_D, PIO_DEFAULT}
 #define PIN_SPI_NPCS1 {PIO_PD25B_SPI0_NPCS1, PIOD, ID_PIOD, PIO_PERIPH_B, PIO_DEFAULT}
 #define PIN_SPI_NPCS3 {PIO_PD27B_SPI0_NPCS3, PIOD, ID_PIOD, PIO_PERIPH_B, PIO_DEFAULT}
 
 /** List of SPI pin definitions (MISO, MOSI & SPCK). */
-#define PINS_SPI  PIN_SPI_MISO, PIN_SPI_MOSI, PIN_SPI_SPCK
+#define PINS_SPI  PIN_SPI_MISO, PIN_SPI_MOSI, PIN_SPI_SPCK, PIN_SPI_NPCS2
 
 /** PCK0 */
 #define PIN_PCK0  {PIO_PB13B_PCK0, PIOB, ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT}
@@ -577,7 +594,7 @@
 #endif 
 /*ENDIF BOARD_LCD_SPI_EXT1 */
 
-#if defined (BOARD_LCD_SPI_EXT2)
+#if defined (BOARD_LCD_ILI9488)
  /** SPI MISO pin definition. */
 #define LCD_SPI_MISO {PIO_PD20B_SPI0_MISO, PIOD, ID_PIOD, PIO_PERIPH_B, PIO_DEFAULT}
 /** SPI MOSI pin definition. */
