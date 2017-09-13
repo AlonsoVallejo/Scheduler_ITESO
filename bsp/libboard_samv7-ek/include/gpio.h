@@ -30,7 +30,7 @@ typedef enum
 	GPIO_PTA09_Select,
 	GPIO_PTA23_Select,
 	GPIO_PTD28_Select,
-	GPIO_PTA2_Select
+	GPIO_PTA02_Select
 }tGPIO_SELECT;
 /*****************************************************************************************************
 * Definition of module wide MACROs / #DEFINE-CONSTANTs

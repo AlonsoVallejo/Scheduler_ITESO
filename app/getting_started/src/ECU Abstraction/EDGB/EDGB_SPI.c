@@ -9,11 +9,10 @@
 * Definition of module wide VARIABLEs
 *****************************************************************************************************/
 /** Pins to configure for the application. */
-static const Pin spi_pins[] = {PIN_SPI_MISO,
-							   PIN_SPI_MOSI,
-							   PIN_SPI_SPCK,
-							   PIN_SPI_NPCS2};
+static const Pin spi_pins[] = {PINS_SPI_EDGB};
 
+uint8_t ADP_Tx_DataBuff[] = {0x00};
+uint8_t ADP_Rx_DataBuff[] = {0x00};
 /****************************************************************************************************
 * Declaration of module wide FUNCTIONs
 ****************************************************************************************************/
@@ -29,7 +28,7 @@ static const Pin spi_pins[] = {PIN_SPI_MISO,
 /****************************************************************************************************
 * Definition of module wide (CONST-) CONSTANTs
 *****************************************************************************************************/
-#define SPI0_CHIP_SELECT 2
+#define SMC_SPI_EDGB_CS 2
 /****************************************************************************************************
 * Code of module wide FUNCTIONS
 *****************************************************************************************************/
@@ -44,17 +43,16 @@ static const Pin spi_pins[] = {PIN_SPI_MISO,
 
 void vfn_EDGB_SPI_Configure(void)
 {
-	PIO_Configure(&spi_pins[PIN_SPI_MISO_SELECT], PIO_LISTSIZE(spi_pins));
-	PIO_Configure(&spi_pins[PIN_SPI_MOSI_SELECT], PIO_LISTSIZE(spi_pins));
-	PIO_Configure(&spi_pins[PIN_SPI_SPCK_SELECT], PIO_LISTSIZE(spi_pins));
-	PIO_Configure(&spi_pins[PIN_SPI_NPCS2_SELECT], PIO_LISTSIZE(spi_pins));
+	PIO_Configure(spi_pins, PIO_LISTSIZE(spi_pins));
+
+	PMC_EnablePeripheral(ID_SPI0);
 
 	SPI_Configure(SPI0,
 				  ID_SPI0,
-				 (SPI_MR_MSTR | SPI_MR_MODFDIS | SPI_PCS( SPI0_CHIP_SELECT )));
+				 (SPI_MR_MSTR | SPI_PCS( SMC_SPI_EDGB_CS )));
 
 	SPI_ConfigureNPCS(SPI0,
-					  SPI0_CHIP_SELECT,
+					  SMC_SPI_EDGB_CS,
 					  SPI_CSR_CPOL | SPI_CSR_BITS_8_BIT | SPI_DLYBS(6, BOARD_MCK)  |SPI_DLYBCT(100, BOARD_MCK) |SPI_SCBR( 20000000, BOARD_MCK));
 
 
@@ -92,13 +90,10 @@ void vfn_EDGB_SPI_DisableSlave(void)
 * \param
 * \return
 */
-uint32_t vfn_EDGB_SPI_ReadData(void)
+uint32_t u32_EDGB_SPI_ReadData(void)
 {
-	volatile uint32_t Rx_Data;
-
 	vfn_EDGB_SPI_EnableSlave();
-	Rx_Data = SPI_Read(SPI0);
-	return Rx_Data;
+	return SPI_Read(SPI0);
 }
 
 /*****************************************************************************************************/
@@ -109,9 +104,9 @@ uint32_t vfn_EDGB_SPI_ReadData(void)
 * \param
 * \return
 */
-void vfn_EDGB_SPI_SendData(uint16_t TxData)
+void vfn_EDGB_SPI_SendData(uint8_t TxData)
 {
 	vfn_EDGB_SPI_EnableSlave();
-	SPI_Write(SPI0, SPI0_CHIP_SELECT, TxData);
+	SPI_Write(SPI0, SMC_SPI_EDGB_CS, TxData);
 }
 

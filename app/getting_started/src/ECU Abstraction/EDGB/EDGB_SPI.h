@@ -35,7 +35,8 @@ typedef enum
 /*****************************************************************************************************
 * Definition of module wide MACROs / #DEFINE-CONSTANTs
 *****************************************************************************************************/
-
+extern uint8_t ADP_Tx_DataBuff[];
+extern uint8_t ADP_Rx_DataBuff[];
 /*****************************************************************************************************
 * Declaration of module wide FUNCTIONS
 *****************************************************************************************************/
@@ -46,8 +47,8 @@ typedef enum
 extern void vfn_EDGB_SPI_Configure(void);
 extern void vfn_EDGB_SPI_EnableSlave(void);
 extern void vfn_EDGB_SPI_DisableSlave(void);
-extern uint32_t vfn_EDGB_SPI_ReadData(void);
-extern void vfn_EDGB_SPI_SendData(uint16_t TxData);
+extern uint32_t u32_EDGB_SPI_ReadData(void);
+extern void vfn_EDGB_SPI_SendData(uint8_t TxData);
 /**************************************************************************************************/
 
 

@@ -100,7 +100,7 @@ extern void SPI_ConfigureNPCS( Spi* spi, uint32_t dwNpcs, uint32_t dwConfigurati
 extern void SPI_ConfigureCSMode( Spi* spi, uint32_t dwNpcs, uint32_t bReleaseOnLast );
 
 extern uint32_t SPI_Read( Spi* spi ) ;
-extern void SPI_Write( Spi* spi, uint32_t dwNpcs, uint16_t wData ) ;
+extern void SPI_Write( Spi* spi, uint32_t dwNpcs, uint8_t wData ) ;
 extern void SPI_WriteLast( Spi* spi, uint32_t dwNpcs, uint16_t wData );
 
 extern uint32_t SPI_GetStatus( Spi* spi ) ;

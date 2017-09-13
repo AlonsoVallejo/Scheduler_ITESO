@@ -18,7 +18,10 @@
 #include "serial_ctrl.h"
 /** Watchdog control function prototypes definitions */
 #include "../Watchdog Timer Control/wdt_ctrl.h"
-
+/** EDGB GPIO control definitions */
+#include    "ECU Abstraction/EDGB/EDGB_GPIO.h"
+/** EDGB SPI control definitions */
+#include    "ECU Abstraction/EDGB/EDGB_SPI.h"
 /*****************************************************************************************************
 * Definition of module wide VARIABLES
 *****************************************************************************************************/

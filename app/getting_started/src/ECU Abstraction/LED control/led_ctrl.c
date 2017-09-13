@@ -21,7 +21,6 @@
 /*****************************************************************************************************
 * Definition of module wide VARIABLEs 
 *****************************************************************************************************/
-uint8_t gu8Index = 0;
 /****************************************************************************************************
 * Declaration of module wide FUNCTIONs 
 ****************************************************************************************************/
@@ -78,6 +77,7 @@ void vfnLedCtrl_Led1Off( void )
 void vfnLedCtrl_BlinkingPattern(void)
 {
 /* Global state machine status for LED flashing control  */
+	static uint8_t gu8Index = 0;
 
     switch ((gu8Index))
     {

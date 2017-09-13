@@ -11,7 +11,6 @@
 /*****************************************************************************************************
 * Include files
 *****************************************************************************************************/
-
 /** Scheduler function prototypes definitions */
 #include    "app_tasks.h"
 
@@ -38,6 +37,10 @@ void TASKS_LIST_3S( void )
 void TASKS_LIST_1S( void )
 {
 	vfnLedCtrl_BlinkingPattern();
+	vfn_EDGB_GPIO_BlinkingPattern(GPIO_PTA09_Select);
+	ADP_Tx_DataBuff[0]++;
+	vfn_EDGB_SPI_SendData(ADP_Tx_DataBuff[0]);
+
 }
 /* List of tasks to be executed @ 2s */
 void TASKS_LIST_2S( void )

@@ -37,6 +37,7 @@
 
 extern void vfn_EDGB_GPIOCtrl_Configure (void);
 extern void vfn_EDGB_GPIOCtrl_Set(tGPIO_SELECT gpio_selected);
+extern void vfn_EDGB_GPIO_BlinkingPattern(tGPIO_SELECT gpio_selected);
 /**************************************************************************************************/
 
 #endif /* EDGB_GPIO_H_ */

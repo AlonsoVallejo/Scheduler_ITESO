@@ -239,11 +239,12 @@ extern uint32_t SPI_Read( Spi* spi )
  * \param npcs  Chip select of the component to address (0, 1, 2 or 3).
  * \param data  Word of data to send.
  */
-extern void SPI_Write( Spi* spi, uint32_t dwNpcs, uint16_t wData )
+extern void SPI_Write( Spi* spi, uint32_t dwNpcs, uint8_t wData )
 {
 	/* Send data */
 	while ( (spi->SPI_SR & SPI_SR_TXEMPTY) == 0 ) ;
-	spi->SPI_TDR = wData | SPI_PCS( dwNpcs ) ;
+	spi->SPI_TDR = SPI_PCS( dwNpcs );
+	spi->SPI_TDR = wData;
 	while ( (spi->SPI_SR & SPI_SR_TDRE) == 0 ) ;
 }
 

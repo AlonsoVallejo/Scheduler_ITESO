@@ -52,7 +52,7 @@ void vfn_EDGB_GPIOCtrl_Configure (void)
 	GPIO_Configure(GPIO_PTA09_Select);
 	GPIO_Configure(GPIO_PTA23_Select);
 	GPIO_Configure(GPIO_PTD28_Select);
-	GPIO_Configure(GPIO_PTA2_Select);
+	GPIO_Configure(GPIO_PTA02_Select);
 }
 
 /*****************************************************************************************************/
@@ -65,4 +65,43 @@ void vfn_EDGB_GPIOCtrl_Configure (void)
 void vfn_EDGB_GPIOCtrl_Set(tGPIO_SELECT gpio_selected)
 {
 	GPIO_Set(gpio_selected);
+}
+
+/*****************************************************************************************************/
+/**
+* \brief
+* \author
+* \param
+* \return
+*/
+void vfn_EDGB_GPIOCtrl_Clear(tGPIO_SELECT gpio_selected)
+{
+	GPIO_Clear(gpio_selected);
+}
+
+/*****************************************************************************************************/
+/**
+* \brief
+* \author
+* \param
+* \return
+*/
+void vfn_EDGB_GPIO_BlinkingPattern(tGPIO_SELECT gpio_selected)
+{
+/* Global state machine status for LED flashing control  */
+	static uint8_t gu8IndexEDGI = 0;
+
+    switch ((gu8IndexEDGI))
+    {
+        case  0:
+        	vfn_EDGB_GPIOCtrl_Clear(gpio_selected);
+            gu8IndexEDGI = 1;
+            break;
+        case  1:
+        	vfn_EDGB_GPIOCtrl_Set(gpio_selected);
+        	gu8IndexEDGI = 0;
+            break;
+        default:
+            break;
+    }
 }
