@@ -17,7 +17,8 @@
 #include "core_cm7.h"
 /** Definitions of System Clock Frequency (Core Clock) */
 #include "system_samv71.h"
-
+/** EDGB SPI control definitions */
+#include    "ECU Abstraction/EDGB/EDGB_SPI.h"
 /*****************************************************************************************************
 * Definition of  VARIABLEs - 
 *****************************************************************************************************/
@@ -58,6 +59,7 @@ int8_t sysTick_init(int32_t base_freq, tPtr_to_function sysTick_handler)
 /* SysTick interrupt handler */
 void SysTick_Handler(void)
 {
+	ADP_Tx_DataBuff_TaskCounter[TASK1_COUNTER] = u32_EDGB_SPI_ReadData();
 	if (pfctnSysTick)
 	{
 		(*pfctnSysTick)();

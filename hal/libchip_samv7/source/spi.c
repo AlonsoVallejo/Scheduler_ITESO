@@ -225,7 +225,7 @@ extern uint32_t SPI_GetStatus( Spi* spi )
  */
 extern uint32_t SPI_Read( Spi* spi )
 {
-	while ( (spi->SPI_SR & SPI_SR_RDRF) == 0 ) ;
+	//while ( (spi->SPI_SR & SPI_SR_RDRF) == 0 ) ;
 
 	return spi->SPI_RDR & 0xFFFF ;
 }

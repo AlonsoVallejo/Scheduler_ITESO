@@ -38,9 +38,8 @@ void TASKS_LIST_1S( void )
 {
 	vfnLedCtrl_BlinkingPattern();
 	vfn_EDGB_GPIO_BlinkingPattern(GPIO_PTA09_Select);
-	ADP_Tx_DataBuff[0]++;
-	vfn_EDGB_SPI_SendData(ADP_Tx_DataBuff[0]);
-
+	ADP_Tx_DataBuff_TaskCounter[TASK2_COUNTER] += 5;
+	vfn_EDGB_SPI_SendData(ADP_Tx_DataBuff_TaskCounter[TASK2_COUNTER]);
 }
 /* List of tasks to be executed @ 2s */
 void TASKS_LIST_2S( void )

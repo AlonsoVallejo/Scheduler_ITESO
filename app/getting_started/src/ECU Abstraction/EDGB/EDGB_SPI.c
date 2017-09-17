@@ -11,7 +11,7 @@
 /** Pins to configure for the application. */
 static const Pin spi_pins[] = {PINS_SPI_EDGB};
 
-uint8_t ADP_Tx_DataBuff[] = {0x00};
+uint8_t ADP_Tx_DataBuff_TaskCounter[TOTAL_TASK_COUTNERS] = {0x00,0x00,0x00,0x00};
 uint8_t ADP_Rx_DataBuff[] = {0x00};
 /****************************************************************************************************
 * Declaration of module wide FUNCTIONs
@@ -94,10 +94,10 @@ uint32_t u32_EDGB_SPI_ReadData(void)
 {
 	vfn_EDGB_SPI_EnableSlave();
 	return SPI_Read(SPI0);
+	vfn_EDGB_SPI_DisableSlave();
 }
 
 /*****************************************************************************************************/
-
 /**
 * \brief
 * \author
@@ -108,5 +108,6 @@ void vfn_EDGB_SPI_SendData(uint8_t TxData)
 {
 	vfn_EDGB_SPI_EnableSlave();
 	SPI_Write(SPI0, SMC_SPI_EDGB_CS, TxData);
+	vfn_EDGB_SPI_DisableSlave();
 }
 

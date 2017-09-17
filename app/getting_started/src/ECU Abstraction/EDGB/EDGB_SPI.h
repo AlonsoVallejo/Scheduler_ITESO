@@ -32,10 +32,19 @@ typedef enum
 	PIN_SPI_NPCS2_SELECT
 }tPIN_SPI_;
 
+typedef enum
+{
+	TASK1_COUNTER,
+	TASK2_COUNTER,
+	TASK3_COUNTER,
+	TASK4_COUNTER,
+	TOTAL_TASK_COUTNERS,
+}tTASK_COUNTERS_;
+
 /*****************************************************************************************************
 * Definition of module wide MACROs / #DEFINE-CONSTANTs
 *****************************************************************************************************/
-extern uint8_t ADP_Tx_DataBuff[];
+extern uint8_t ADP_Tx_DataBuff_TaskCounter[TOTAL_TASK_COUTNERS];
 extern uint8_t ADP_Rx_DataBuff[];
 /*****************************************************************************************************
 * Declaration of module wide FUNCTIONS

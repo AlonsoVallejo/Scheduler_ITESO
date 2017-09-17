@@ -57,7 +57,7 @@ typedef struct
 
 #define    TASK_SCH_MAX_NUMBER_TIME_TASKS   0x04u
 
-#define    TASK_SCHEDULER_BASE_FREQ		    2000
+#define    TASK_SCHEDULER_BASE_FREQ		    1000
 /*****************************************************************************************************
 * Definition of module wide VARIABLEs
 *****************************************************************************************************/
